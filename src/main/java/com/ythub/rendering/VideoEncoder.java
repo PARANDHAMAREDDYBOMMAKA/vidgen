@@ -78,6 +78,22 @@ public class VideoEncoder {
 
     public void mergeAudioVideo(String videoPath, String audioPath, String outputPath) {
         try {
+            File videoFile = new File(videoPath);
+            File audioFile = new File(audioPath);
+
+            if (!videoFile.exists()) {
+                throw new RuntimeException("Video file not found: " + videoPath);
+            }
+
+            if (!audioFile.exists()) {
+                logger.warn("Audio file not found: {}. Video will have no audio.", audioPath);
+                copyVideoWithoutAudio(videoPath, outputPath);
+                return;
+            }
+
+            logger.info("Merging video: {} ({} bytes) with audio: {} ({} bytes)",
+                videoPath, videoFile.length(), audioPath, audioFile.length());
+
             ProcessBuilder pb = new ProcessBuilder(
                     "ffmpeg",
                     "-y",
@@ -86,7 +102,9 @@ public class VideoEncoder {
                     "-c:v", "copy",
                     "-c:a", "aac",
                     "-b:a", config.getAudioBitrate() + "k",
-                    "-strict", "experimental",
+                    "-map", "0:v:0",
+                    "-map", "1:a:0",
+                    "-shortest",
                     outputPath
             );
 
@@ -98,11 +116,37 @@ public class VideoEncoder {
                 throw new RuntimeException("FFmpeg merge failed with exit code: " + exitCode);
             }
 
-            logger.info("Audio-video merge complete");
+            logger.info("Audio-video merge complete with perfect sync: {}", outputPath);
 
         } catch (Exception e) {
             logger.error("Error merging audio and video", e);
             throw new RuntimeException("Audio-video merge failed", e);
+        }
+    }
+
+    private void copyVideoWithoutAudio(String videoPath, String outputPath) {
+        try {
+            ProcessBuilder pb = new ProcessBuilder(
+                    "ffmpeg",
+                    "-y",
+                    "-i", videoPath,
+                    "-c", "copy",
+                    outputPath
+            );
+
+            pb.inheritIO();
+            Process process = pb.start();
+            int exitCode = process.waitFor();
+
+            if (exitCode != 0) {
+                throw new RuntimeException("FFmpeg copy failed with exit code: " + exitCode);
+            }
+
+            logger.info("Video copied without audio: {}", outputPath);
+
+        } catch (Exception e) {
+            logger.error("Error copying video", e);
+            throw new RuntimeException("Video copy failed", e);
         }
     }
 }

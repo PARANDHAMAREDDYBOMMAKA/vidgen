@@ -37,7 +37,7 @@ public class VideoGenerator {
 
             String videoPath = config.getOutputDir() + "/" + outputFileName;
             String tempVideoPath = config.getTempDir() + "/temp_video.mp4";
-            String tempAudioPath = config.getTempDir() + "/temp_audio.wav";
+            String tempAudioPath = config.getTempDir() + "/temp_audio.mp3";
 
             logger.info("Generating audio from narration...");
             generateAudio(timeline, tempAudioPath);

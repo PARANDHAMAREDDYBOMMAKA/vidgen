@@ -111,11 +111,18 @@
             <version>2.0</version>
         </dependency>
 
-        <!-- FreeTTS (alternative TTS - offline) -->
+        <!-- OkHttp for HTTP requests (Google TTS) -->
         <dependency>
-            <groupId>net.sf.sociaal</groupId>
-            <artifactId>freetts</artifactId>
-            <version>1.2.2</version>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.12.0</version>
+        </dependency>
+
+        <!-- MP3 decoder for Google TTS -->
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>1.9.5.4</version>
         </dependency>
 
         <!-- JUnit for testing -->
@@ -147,7 +154,23 @@
                 <version>3.1.1</version>
                 <configuration>
                     <mainClass>com.ythub.Main</mainClass>
+                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <systemProperties>
+                                <systemProperty>
+                                    <key>java.awt.headless</key>
+                                    <value>false</value>
+                                </systemProperty>
+                            </systemProperties>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Maven Shade Plugin - Create fat JAR -->

@@ -79,6 +79,10 @@ public class Timeline {
         totalDuration = currentTime;
     }
 
+    public void recalculateTimings() {
+        recalculateTiming();
+    }
+
     public void clear() {
         scenes.clear();
         totalDuration = 0;

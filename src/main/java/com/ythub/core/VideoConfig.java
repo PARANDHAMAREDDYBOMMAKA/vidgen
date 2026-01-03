@@ -31,14 +31,16 @@ public class VideoConfig {
     private int audioBitrate = 320;
     private int audioChannels = 2;
 
-    private String primaryColor = "#2196F3";
-    private String secondaryColor = "#FF5722";
+    private String primaryColor = "#FFFFFF";
+    private String secondaryColor = "#FFFFFF";
     private String backgroundColor = "#FFFFFF";
-    private String textColor = "#212121";
+    private String textColor = "#000000";
     private String codeTheme = "monokai";
 
     private String ttsProvider = "google";
-    private String ttsVoice = "en-US-Neural2-J";
+    private String ttsApiKey = null;
+    private String ttsVoice = "21m00Tcm4TlvDq8ikWAM";
+    private String ttsGender = "male";
     private float ttsSpeed = 1.0f;
     private float ttsPitch = 0.0f;
 
@@ -194,6 +196,14 @@ public class VideoConfig {
         this.ttsProvider = ttsProvider;
     }
 
+    public String getTtsApiKey() {
+        return ttsApiKey;
+    }
+
+    public void setTtsApiKey(String ttsApiKey) {
+        this.ttsApiKey = ttsApiKey;
+    }
+
     public String getTtsVoice() {
         return ttsVoice;
     }
@@ -216,6 +226,14 @@ public class VideoConfig {
 
     public void setTtsPitch(float ttsPitch) {
         this.ttsPitch = ttsPitch;
+    }
+
+    public String getTtsGender() {
+        return ttsGender;
+    }
+
+    public void setTtsGender(String ttsGender) {
+        this.ttsGender = ttsGender;
     }
 
     public String getOutputDir() {
