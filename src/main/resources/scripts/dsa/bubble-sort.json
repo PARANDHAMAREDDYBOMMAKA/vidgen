@@ -1,0 +1,82 @@
+{
+  "title": "Bubble Sort Algorithm",
+  "topic": "sorting",
+  "difficulty": "beginner",
+  "estimatedDuration": 600,
+  "targetArray": [64, 34, 25, 12, 22, 11, 90],
+  "scenes": [
+    {
+      "type": "intro",
+      "duration": 5,
+      "data": {
+        "title": "Bubble Sort Algorithm",
+        "subtitle": "A Simple Sorting Algorithm"
+      }
+    },
+    {
+      "type": "narration",
+      "duration": 15,
+      "narration": "Bubble Sort is one of the simplest sorting algorithms. It works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order. This process continues until the list is sorted.",
+      "visuals": {
+        "type": "title_slide",
+        "title": "What is Bubble Sort?",
+        "bullets": [
+          "Simple comparison-based algorithm",
+          "Compares adjacent elements",
+          "Swaps if in wrong order",
+          "Repeats until sorted"
+        ]
+      }
+    },
+    {
+      "type": "narration",
+      "duration": 12,
+      "narration": "Let's analyze the time complexity. In the worst case, when the array is in reverse order, Bubble Sort performs n squared comparisons. In the best case, when the array is already sorted, it performs n comparisons. The space complexity is O of 1 as it only requires a single additional memory space.",
+      "visuals": {
+        "type": "title_slide",
+        "title": "Complexity Analysis",
+        "bullets": [
+          "Time Complexity: O(n²) - Worst/Average",
+          "Time Complexity: O(n) - Best",
+          "Space Complexity: O(1)",
+          "In-place sorting algorithm"
+        ]
+      }
+    },
+    {
+      "type": "visualization",
+      "duration": 180,
+      "narration": "Let's visualize how Bubble Sort works with an example array",
+      "animation": {
+        "type": "bubble_sort",
+        "array": [64, 34, 25, 12, 22, 11, 90],
+        "speed": "medium",
+        "highlightComparisons": true,
+        "showSwaps": true
+      }
+    },
+    {
+      "type": "narration",
+      "duration": 10,
+      "narration": "Bubble Sort is rarely used in practice for large datasets due to its poor time complexity. However, it's an excellent algorithm for learning sorting concepts and is useful for small datasets or nearly sorted arrays.",
+      "visuals": {
+        "type": "title_slide",
+        "title": "Practical Applications",
+        "bullets": [
+          "Educational purposes",
+          "Small datasets",
+          "Nearly sorted arrays",
+          "Simple implementation"
+        ]
+      }
+    },
+    {
+      "type": "outro",
+      "duration": 5,
+      "data": {
+        "message": "Thank you for watching!",
+        "cta": "Subscribe for more DSA videos"
+      }
+    }
+  ]
+}

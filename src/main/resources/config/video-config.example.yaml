@@ -1,0 +1,30 @@
+video:
+  resolution: "3840x2160"
+  fps: 60
+  codec: "hevc"
+  bitrate: "45000k"
+  format: "mp4"
+
+audio:
+  sampleRate: 48000
+  bitrate: "320k"
+  channels: 2
+
+theme:
+  primaryColor: "#2196F3"
+  secondaryColor: "#FF5722"
+  backgroundColor: "#FFFFFF"
+  textColor: "#212121"
+  codeTheme: "monokai"
+
+tts:
+  provider: "google"
+  voice: "en-US-Neural2-J"
+  speed: 1.0
+  pitch: 0.0
+
+paths:
+  output: "output"
+  temp: "temp"
+  assets: "src/main/resources/assets"
+  scripts: "src/main/resources/scripts"
